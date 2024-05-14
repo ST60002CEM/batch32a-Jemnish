@@ -1,4 +1,5 @@
 import 'package:final_assignment/screen/login_screen.dart';
+import 'package:final_assignment/screen/splash_screens/frist_splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     Future.delayed(const Duration(seconds: 4), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const LoginScreen()),
+        MaterialPageRoute(builder: (context) => const FirstSplashScreen()),
       );
     });
   }
