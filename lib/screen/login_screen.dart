@@ -1,3 +1,4 @@
+import 'package:final_assignment/screen/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -5,9 +6,70 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login Screen'),
+      ),
       body: Center(
-        child: Text('This is the login screen'),
+        child: Form(
+          key: formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  prefixIcon: Icon(Icons.email),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your email';
+                  } else if (value != 'admin') {
+                    return 'Email not registered';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                  prefixIcon: Icon(Icons.lock),
+                ),
+                obscureText: true,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your password';
+                  } else if (value != 'admin') {
+                    return 'Incorrect password';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DashboardScreen()),
+                    );
+                  }
+                },
+                child: const Text('Login'),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.mail),
+                label: const Text('Sign in with Google'),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
