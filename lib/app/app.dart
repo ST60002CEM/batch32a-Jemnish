@@ -1,4 +1,4 @@
-import 'package:final_assignment/screen/login_screen.dart';
+import 'package:final_assignment/screen/splash_screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -8,7 +8,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       // themes
-      home: LoginScreen(),
+      home: OnboardingScreen(),
     );
   }
 }
