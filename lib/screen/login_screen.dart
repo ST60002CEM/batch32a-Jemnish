@@ -18,35 +18,41 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  prefixIcon: Icon(Icons.email),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                    prefixIcon: Icon(Icons.email),
+                  ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your email';
+                    } else if (value != 'admin') {
+                      return 'Email not registered';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your email';
-                  } else if (value != 'admin') {
-                    return 'Email not registered';
-                  }
-                  return null;
-                },
               ),
               const SizedBox(height: 20),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  prefixIcon: Icon(Icons.lock),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Password',
+                    prefixIcon: Icon(Icons.lock),
+                  ),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your password';
+                    } else if (value != 'admin') {
+                      return 'Incorrect password';
+                    }
+                    return null;
+                  },
                 ),
-                obscureText: true,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your password';
-                  } else if (value != 'admin') {
-                    return 'Incorrect password';
-                  }
-                  return null;
-                },
               ),
               const SizedBox(height: 20),
               ElevatedButton(
