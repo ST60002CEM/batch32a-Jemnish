@@ -1,4 +1,4 @@
-import 'package:final_assignment/screen/splash_screens/frist_splash_screen.dart';
+import 'package:final_assignment/screen/splash_screens/frist_onboard_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {

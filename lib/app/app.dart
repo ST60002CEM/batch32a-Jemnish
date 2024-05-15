@@ -1,4 +1,4 @@
-import 'package:final_assignment/screen/splash_screens/onboarding_screen.dart';
+import 'package:final_assignment/screen/splash_screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {

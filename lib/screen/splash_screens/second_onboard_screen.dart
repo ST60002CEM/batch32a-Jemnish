@@ -1,8 +1,8 @@
-import 'package:final_assignment/screen/splash_screens/second_splash_screen.dart';
+import 'package:final_assignment/screen/splash_screens/third_onboard_screen.dart';
 import 'package:flutter/material.dart';
 
-class FirstSplashScreen extends StatelessWidget {
-  const FirstSplashScreen({super.key});
+class SecondSplashScreen extends StatelessWidget {
+  const SecondSplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class FirstSplashScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/splash_1.jpg',
+              'assets/images/splash_2.jpg',
               width: 250,
               height: 350,
             ),
@@ -37,7 +37,7 @@ class FirstSplashScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const SecondSplashScreen()),
+                      builder: (context) => const ThirdSplashScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
