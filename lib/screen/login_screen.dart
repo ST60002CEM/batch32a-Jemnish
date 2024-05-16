@@ -8,6 +8,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 212, 228, 212),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -15,6 +16,7 @@ class LoginScreen extends StatelessWidget {
             const Text(
               'Login Page',
               style: TextStyle(
+                fontFamily: 'poppins',
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
@@ -77,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                   },
                   child: const Text('Forgot Password?'),
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 50),
                 TextButton(
                   onPressed: () {
                     // Implement registration functionality
