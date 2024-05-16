@@ -13,67 +13,79 @@ class LoginScreen extends StatelessWidget {
         title: const Text('Login Screen'),
       ),
       body: Center(
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    prefixIcon: Icon(Icons.email),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    fit: BoxFit.contain,
                   ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter your email';
-                    } else if (value != 'admin') {
-                      return 'Email not registered';
-                    }
-                    return null;
-                  },
                 ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Password',
-                    prefixIcon: Icon(Icons.lock),
+                const SizedBox(height: 20),
+                Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Email',
+                          prefixIcon: Icon(Icons.email),
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter your email';
+                          } else if (value != 'admin') {
+                            return 'Email not registered';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Password',
+                          prefixIcon: Icon(Icons.lock),
+                        ),
+                        obscureText: true,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter your password';
+                          } else if (value != 'admin') {
+                            return 'Incorrect password';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
                   ),
-                  obscureText: true,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter your password';
-                    } else if (value != 'admin') {
-                      return 'Incorrect password';
-                    }
-                    return null;
-                  },
                 ),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DashboardScreen()),
-                    );
-                  }
-                },
-                child: const Text('Login'),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton.icon(
-                onPressed: () {},
-                icon: const Icon(Icons.mail),
-                label: const Text('Sign in with Google'),
-              ),
-            ],
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DashboardScreen(),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text('Login'),
+                ),
+                const SizedBox(height: 20),
+                OutlinedButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(Icons.mail),
+                  label: const Text('Sign in with Google'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
