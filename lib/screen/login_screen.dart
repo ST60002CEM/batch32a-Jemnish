@@ -1,4 +1,5 @@
 import 'package:final_assignment/screen/dashboard_screen.dart';
+import 'package:final_assignment/screen/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -109,7 +110,13 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RegisterScreen()),
+                  );
+                  },
                   child: const Text(
                     'Register',
                     style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
