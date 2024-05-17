@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,23 +26,25 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Image.asset(
-              'assets/images/logo.png', // Change to your app logo image path
+              'assets/images/logo.png',
               width: 100,
               height: 100,
             ),
             const SizedBox(height: 20),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _emailController,
+                    decoration: const InputDecoration(
                       labelText: 'Email',
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(
                       labelText: 'Password',
                     ),
                     obscureText: true,
@@ -50,55 +55,80 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const DashboardScreen()),
-                );
+                if (_emailController.text == "admin" &&
+                    _passwordController.text == "admin") {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DashboardScreen()),
+                  );
+                } else {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Error'),
+                        content: const Text('Invalid email or password'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 40,
-                    vertical: 16), // Adjust padding as per your need
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                      8), // Adjust border radius as per your need
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                backgroundColor: const Color.fromARGB(
-                    255, 102, 200, 105), // Change background color
+                backgroundColor: const Color.fromARGB(255, 102, 200, 105),
               ),
-              child: const Text('Continue'),
+              child: const Text(
+                'Continue',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
             const SizedBox(height: 10),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
-                  onPressed: () {
-                    // Implement forgot password functionality
-                  },
-                  child: const Text('Forgot Password?'),
+                  onPressed: () {},
+                  child: const Text(
+                    'Forgot Password?',
+                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                  ),
                 ),
-                const SizedBox(width: 50),
                 TextButton(
-                  onPressed: () {
-                    // Implement registration functionality
-                  },
-                  child: const Text('Register'),
+                  onPressed: () {},
+                  child: const Text(
+                    'Register',
+                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 20),
             OutlinedButton.icon(
-              onPressed: () {
-                // Implement login with Google functionality
-              },
+              onPressed: () {},
               icon: SvgPicture.asset(
-                'assets/icons/google.svg', // Change to your Google logo image path
+                'assets/icons/google.svg',
                 width: 24,
                 height: 24,
               ),
-              label: const Text('Login with Google'),
+              label: const Text(
+                'Login with Google',
+                style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+              ),
             ),
           ],
         ),
