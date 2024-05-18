@@ -1,21 +1,21 @@
 import 'package:final_assignment/screen/splash_screens/frist_onboard_screen.dart';
 import 'package:flutter/material.dart';
 
-class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  _OnboardingScreenState createState() => _OnboardingScreenState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 4), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const FirstSplashScreen()),
+        MaterialPageRoute(builder: (context) => const FirstOnboardScreen()),
       );
     });
   }

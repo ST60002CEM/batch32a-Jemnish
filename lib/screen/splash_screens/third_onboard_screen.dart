@@ -1,8 +1,8 @@
 import 'package:final_assignment/screen/login_screen.dart';
 import 'package:flutter/material.dart';
 
-class ThirdSplashScreen extends StatelessWidget {
-  const ThirdSplashScreen({super.key});
+class ThirdOnboardScreen extends StatelessWidget {
+  const ThirdOnboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

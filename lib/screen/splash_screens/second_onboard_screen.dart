@@ -1,8 +1,8 @@
 import 'package:final_assignment/screen/splash_screens/third_onboard_screen.dart';
 import 'package:flutter/material.dart';
 
-class SecondSplashScreen extends StatelessWidget {
-  const SecondSplashScreen({super.key});
+class SecondOnboardScreen extends StatelessWidget {
+  const SecondOnboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class SecondSplashScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ThirdSplashScreen()),
+                      builder: (context) => const ThirdOnboardScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
