@@ -13,10 +13,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      const Text('Tab2'),
-      const Text('Tab3'),
-      const Text('Tab4'),
-      const Text('Tab5'),
+      const Center(child: Text('DashBoard')),
+      const Center(child: Text('NewsFeed')),
+      const Center(child: Text('MarketPlace')),
+      const Center(child: Text('Profile')),
     ];
 
     return Scaffold(
@@ -29,37 +29,45 @@ class _DashboardScreenState extends State<DashboardScreen> {
               iconSize: 21,
               icon: const Icon(Icons.menu, color: Colors.black87)),
           backgroundColor: const Color.fromARGB(255, 212, 228, 212),
-          title: const Text('Fryo', textAlign: TextAlign.center),
+          title: const Text('Khet Pati', textAlign: TextAlign.center),
           actions: <Widget>[
             IconButton(
               padding: const EdgeInsets.all(0),
               onPressed: () {},
               iconSize: 21,
-              icon: const Icon(Icons.menu),
+              icon: const Icon(Icons.notifications),
             ),
-            IconButton(
-              padding: const EdgeInsets.all(0),
-              onPressed: () {},
-              iconSize: 21,
-              icon: const Icon(Icons.menu),
+            InkWell(
+              onTap: () {
+                // Handle button tap
+              },
+              child: Image.asset(
+                'assets/images/profile.png', // Replace with your image path
+                width: 21,
+                height: 21,
+              ),
             )
           ],
         ),
         body: tabs[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Menu'),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_basket),
-              label: 'Cart',
+              icon: Icon(Icons.dashboard),
+              label: 'DashBoard',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border),
-              label: 'Favourites',
+              icon: Icon(Icons.abc_sharp),
+              label: 'NewsFeed',
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: 'Settings')
+              icon: Icon(Icons.rss_feed),
+              label: 'MarketPlace',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
           ],
           currentIndex: _selectedIndex,
           type: BottomNavigationBarType.fixed,
