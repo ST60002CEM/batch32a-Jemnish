@@ -9,6 +9,8 @@ class LoginScreen extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  final sbox = const SizedBox(height: 20);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +27,13 @@ class LoginScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 20),
+            sbox,
             Image.asset(
               'assets/images/logo.png',
               width: 100,
               height: 100,
             ),
-            const SizedBox(height: 20),
+            sbox,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -45,15 +47,13 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   TextField(
                     controller: _passwordController,
-                    decoration: const InputDecoration(
-                      labelText: 'Password'
-                    ),
+                    decoration: const InputDecoration(labelText: 'Password'),
                     obscureText: true,
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            sbox,
             ElevatedButton(
               onPressed: () {
                 if (_emailController.text == "admin" &&
@@ -61,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>  DashboardScreen()),
+                        builder: (context) => const DashboardScreen()),
                   );
                 } else {
                   showDialog(
@@ -112,10 +112,9 @@ class LoginScreen extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>  RegisterScreen()),
-                  );
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterScreen()),
+                    );
                   },
                   child: const Text(
                     'Register',
@@ -124,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            sbox,
             OutlinedButton.icon(
               onPressed: () {},
               icon: SvgPicture.asset(
