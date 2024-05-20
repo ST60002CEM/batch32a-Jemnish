@@ -1,3 +1,5 @@
+import 'package:final_assignment/screen/bottom_screens/marketplace_screen.dart';
+import 'package:final_assignment/screen/bottom_screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -13,10 +15,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      const Center(child: Text('DashBoard')),
+      const DashboardScreen(),
       const Center(child: Text('NewsFeed')),
-      const Center(child: Text('MarketPlace')),
-      const Center(child: Text('Profile')),
+      const MarketPlaceScreen(),
+      const ProfileScreen(),
     ];
 
     return Scaffold(
