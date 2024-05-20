@@ -1,5 +1,6 @@
+import 'package:final_assignment/screen/bottom_screens/homepage_screen.dart';
 import 'package:final_assignment/screen/bottom_screens/marketplace_screen.dart';
-import 'package:final_assignment/screen/bottom_screens/newsfreed_screen.dart';
+import 'package:final_assignment/screen/bottom_screens/newsfeed_screen.dart';
 import 'package:final_assignment/screen/bottom_screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      const DashboardScreen(),
+      const HomePageScreen(),
       const NewsFeedScreen(),
       const MarketPlaceScreen(),
       const ProfileScreen(),

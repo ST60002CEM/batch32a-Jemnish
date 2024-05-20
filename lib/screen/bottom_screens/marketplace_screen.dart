@@ -5,8 +5,6 @@ class MarketPlaceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Center(child: Text('MarketPlace')),
-    );
+    return Center(child: const Text('MarketPlace Page'));
   }
 }

@@ -5,8 +5,6 @@ class HomePageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Center(child: Text('DashBoard')),
-    );
+    return const Center(child: Text('Home Page'));
   }
 }
