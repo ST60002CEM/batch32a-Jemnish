@@ -6,24 +6,20 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        backgroundColor: Colors.teal,
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 20),
             const CircleAvatar(
               radius: 50,
-              backgroundImage:
-                  NetworkImage('https://www.example.com/profile_pic.jpg'),
+              backgroundImage: AssetImage('assets/images/profile.png'),
             ),
             const SizedBox(height: 20),
             const Text(
-              'John Doe',
+              'Admin',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -31,7 +27,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             const Text(
-              'john.doe@example.com',
+              'Admin@example.com',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
