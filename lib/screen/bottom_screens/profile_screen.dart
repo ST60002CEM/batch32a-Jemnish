@@ -38,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
               label: const Text('Edit Profile'),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.teal,
+                backgroundColor: const Color.fromARGB(255, 102, 200, 105),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -51,7 +51,7 @@ class ProfileScreen extends StatelessWidget {
               label: const Text('Settings'),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.teal,
+                backgroundColor: const Color.fromARGB(255, 102, 200, 105),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
