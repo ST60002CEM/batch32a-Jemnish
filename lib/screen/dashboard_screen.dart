@@ -33,7 +33,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               iconSize: 21,
               icon: const Icon(Icons.menu, color: Colors.black87)),
           backgroundColor: const Color.fromARGB(255, 212, 228, 212),
-          title: const Text('Khet Pati', textAlign: TextAlign.center),
+          title: const Text('Kheti Pati', textAlign: TextAlign.center),
           actions: <Widget>[
             IconButton(
               padding: const EdgeInsets.all(0),
