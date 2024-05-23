@@ -11,6 +11,14 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 20),
+            const Text(
+              'Profile',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 20),
             const CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage('assets/images/profile.png'),
@@ -19,7 +27,7 @@ class ProfileScreen extends StatelessWidget {
             const Text(
               'Admin',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
             ),
