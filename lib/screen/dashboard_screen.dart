@@ -42,15 +42,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
               icon: const Icon(Icons.notifications),
             ),
             InkWell(
-              onTap: () {
-                // Handle button tap
-              },
-              child: Image.asset(
-                'assets/images/profile.png', // Replace with your image path
-                width: 21,
-                height: 21,
-              ),
-            )
+                onTap: () {},
+                child: const CircleAvatar(
+                  radius: 15,
+                  backgroundImage: AssetImage('assets/images/profile.png'),
+                ))
           ],
         ),
         body: tabs[_selectedIndex],
