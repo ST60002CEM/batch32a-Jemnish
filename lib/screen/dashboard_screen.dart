@@ -33,7 +33,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               iconSize: 21,
               icon: const Icon(Icons.menu, color: Colors.black87)),
           backgroundColor: const Color.fromARGB(255, 212, 228, 212),
-          title: const Text('Kheti Pati', textAlign: TextAlign.center),
+          title: Image.asset('assets/images/profiles.png', height: 30),
           actions: <Widget>[
             IconButton(
               padding: const EdgeInsets.all(0),
@@ -46,7 +46,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: const CircleAvatar(
                   radius: 15,
                   backgroundImage: AssetImage('assets/images/profile.png'),
-                  
                 ))
           ],
         ),
