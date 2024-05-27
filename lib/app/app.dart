@@ -1,4 +1,4 @@
-import 'package:final_assignment/screen/dashboard_screen.dart';
+import 'package:final_assignment/screen/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -6,9 +6,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       // themes
-      home: DashboardScreen(),
+      home: LoginScreen(),
     );
   }
 }

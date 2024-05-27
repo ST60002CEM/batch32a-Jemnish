@@ -22,7 +22,7 @@ class FirstOnboardScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
+                fontFamily: 'Poppins Regular',
               ),
             ),
             const Text(

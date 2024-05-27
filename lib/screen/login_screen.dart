@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
             const Text(
               'Login Page',
               style: TextStyle(
-                fontFamily: 'poppins',
+                fontFamily: 'Poppins Regular',
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
@@ -47,7 +47,9 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   TextField(
                     controller: _passwordController,
-                    decoration: const InputDecoration(labelText: 'Password'),
+                    decoration: const InputDecoration(
+                      labelText: 'Password',
+                    ),
                     obscureText: true,
                   ),
                 ],
@@ -106,7 +108,10 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {},
                   child: const Text(
                     'Forgot Password?',
-                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontFamily: 'Poppins Regular',
+                    ),
                   ),
                 ),
                 TextButton(
@@ -118,7 +123,10 @@ class LoginScreen extends StatelessWidget {
                   },
                   child: const Text(
                     'Register',
-                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontFamily: 'Poppins Bold',
+                    ),
                   ),
                 ),
               ],
