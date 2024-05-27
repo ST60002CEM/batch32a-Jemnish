@@ -48,7 +48,7 @@ class ProfileScreen extends StatelessWidget {
               label: const Text('Edit Profile'),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
-                backgroundColor: const Color.fromARGB(255, 102, 200, 105),
+                backgroundColor: const Color(0xFF18B5A3),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -61,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
               label: const Text('Settings'),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
-                backgroundColor: const Color.fromARGB(255, 102, 200, 105),
+                backgroundColor: const Color(0xFF18B5A3),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -102,11 +102,14 @@ class ProfileScreen extends StatelessWidget {
               label: const Text('Log Out'),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.red,
+                backgroundColor: const Color.fromARGB(255, 207, 80, 71),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
+            ),
+            const Text(
+              'version 1.0.0',
             ),
             const SizedBox(height: 40),
           ],

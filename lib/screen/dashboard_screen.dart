@@ -71,7 +71,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ],
           currentIndex: _selectedIndex,
           type: BottomNavigationBarType.fixed,
-          fixedColor: Colors.green[600],
+          fixedColor: const Color(0xFF18B5A3),
           onTap: _onItemTapped,
         ));
   }
