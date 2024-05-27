@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 
-ThemeData getApplicationTheme() {
+ThemeData getApplicationTheme(bool isDark) {
   return ThemeData(
-      primarySwatch: Colors.green,
-      scaffoldBackgroundColor: Colors.grey[100],
-      fontFamily: 'Poppins Regular',
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          backgroundColor: const Color.fromARGB(255, 102, 200, 105),
-        ),
-      ));
+      colorScheme: isDark
+          ? const ColorScheme.dark(
+              primary: Colors.black,
+            )
+          : const ColorScheme.light(
+              primary: Color.fromARGB(255, 17, 119, 20),
+            ),
+      brightness: isDark ? Brightness.dark : Brightness.light,
+      fontFamily: 'Montserrat',
+      useMaterial3: true);
+  // primarySwatch: Colors.green,
+  // scaffoldBackgroundColor: Colors.grey[100],
+  // fontFamily: 'Poppins Regular',
+  // elevatedButtonTheme: ElevatedButtonThemeData(
+  //   style: ElevatedButton.styleFrom(
+  //     padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.circular(8),
+  //     ),
+  //     backgroundColor: const Color.fromARGB(255, 102, 200, 105),
+  //   ),
 }
