@@ -17,15 +17,6 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 212, 228, 212),
       appBar: AppBar(
-        
-        title: const Text(
-          'Register Page',
-          style: TextStyle(
-            fontFamily: 'poppins',
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
         backgroundColor: const Color.fromARGB(255, 102, 200, 105),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -103,7 +94,7 @@ class RegisterScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>  DashboardScreen()),
+                          builder: (context) => const DashboardScreen()),
                     );
                   } else {
                     showDialog(
