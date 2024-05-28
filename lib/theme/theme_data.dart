@@ -10,7 +10,7 @@ ThemeData getApplicationTheme(bool isDark) {
               primary: Color.fromARGB(255, 17, 119, 20),
             ),
       brightness: isDark ? Brightness.dark : Brightness.light,
-      fontFamily: 'Montserrat',
+      fontFamily: 'Poppins',
       useMaterial3: true);
   // primarySwatch: Colors.green,
   // scaffoldBackgroundColor: Colors.grey[100],
