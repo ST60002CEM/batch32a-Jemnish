@@ -13,12 +13,11 @@ ThemeData getApplicationTheme(bool isDark) {
       fontFamily: 'Poppins',
       useMaterial3: true,
       elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      backgroundColor: const Color.fromARGB(255, 102, 200, 105),
-    ),);
-  
+          style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        backgroundColor: const Color.fromARGB(255, 102, 200, 105),
+      )));
 }
