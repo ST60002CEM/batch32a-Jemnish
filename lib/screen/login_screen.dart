@@ -1,6 +1,5 @@
 import 'package:final_assignment/screen/dashboard_screen.dart';
 import 'package:final_assignment/screen/register_screen.dart';
-import 'package:final_assignment/theme/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -15,7 +14,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: getApplicationTheme(true),
       home: Scaffold(
         // backgroundColor: const Color.fromARGB(255, 212, 228, 212),
         body: Center(
