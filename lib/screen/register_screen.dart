@@ -16,7 +16,6 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: getApplicationTheme(false),
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 102, 200, 105),
