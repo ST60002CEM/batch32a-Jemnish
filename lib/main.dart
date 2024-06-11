@@ -1,5 +1,5 @@
-import 'package:final_assignment/app/app.dart';
 import 'package:flutter/material.dart';
+import 'package:student_management_starter/app/app.dart';
 
 void main() {
   runApp(

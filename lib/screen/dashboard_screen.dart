@@ -1,8 +1,9 @@
-import 'package:final_assignment/screen/bottom_screens/homepage_screen.dart';
-import 'package:final_assignment/screen/bottom_screens/marketplace_screen.dart';
-import 'package:final_assignment/screen/bottom_screens/newsfeed_screen.dart';
-import 'package:final_assignment/screen/bottom_screens/profile_screen.dart';
+
 import 'package:flutter/material.dart';
+import 'package:student_management_starter/screen/bottom_screens/homepage_screen.dart';
+import 'package:student_management_starter/screen/bottom_screens/marketplace_screen.dart';
+import 'package:student_management_starter/screen/bottom_screens/newsfeed_screen.dart';
+import 'package:student_management_starter/screen/bottom_screens/profile_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});

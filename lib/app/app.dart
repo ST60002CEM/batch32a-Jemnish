@@ -1,5 +1,5 @@
-import 'package:final_assignment/screen/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:student_management_starter/screen/login_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

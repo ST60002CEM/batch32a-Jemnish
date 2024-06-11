@@ -1,5 +1,5 @@
-import 'package:final_assignment/screen/splash_screens/frist_onboard_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:student_management_starter/screen/splash_screens/frist_onboard_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -1,6 +1,6 @@
-import 'package:final_assignment/screen/dashboard_screen.dart';
-import 'package:final_assignment/theme/theme_data.dart';
+
 import 'package:flutter/material.dart';
+import 'package:student_management_starter/screen/dashboard_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});

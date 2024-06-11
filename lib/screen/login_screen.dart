@@ -1,7 +1,8 @@
-import 'package:final_assignment/screen/dashboard_screen.dart';
-import 'package:final_assignment/screen/register_screen.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:student_management_starter/screen/dashboard_screen.dart';
+import 'package:student_management_starter/screen/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});

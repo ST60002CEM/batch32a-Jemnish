@@ -1,5 +1,5 @@
-import 'package:final_assignment/screen/splash_screens/second_onboard_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:student_management_starter/screen/splash_screens/second_onboard_screen.dart';
 
 class FirstOnboardScreen extends StatelessWidget {
   const FirstOnboardScreen({super.key});
