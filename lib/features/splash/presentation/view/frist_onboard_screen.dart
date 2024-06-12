@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:student_management_starter/screen/splash_screens/third_onboard_screen.dart';
+import 'package:student_management_starter/features/splash/presentation/view/second_onboard_screen.dart';
 
-class SecondOnboardScreen extends StatelessWidget {
-  const SecondOnboardScreen({super.key});
+class FirstOnboardScreen extends StatelessWidget {
+  const FirstOnboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class SecondOnboardScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/splash_2.jpg',
+              'assets/images/splash_1.jpg',
               width: 250,
               height: 350,
             ),
@@ -22,7 +22,7 @@ class SecondOnboardScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
+                fontFamily: 'Poppins Regular',
               ),
             ),
             const Text(
@@ -37,7 +37,7 @@ class SecondOnboardScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ThirdOnboardScreen()),
+                      builder: (context) => const SecondOnboardScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
