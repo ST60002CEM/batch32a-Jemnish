@@ -25,14 +25,6 @@ class _SplashViewState extends ConsumerState<SplashView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Welcome to KhetiPati',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             Image.asset(
               'assets/images/logo.png',
               width: 250, // adjust the width as needed
@@ -43,7 +35,8 @@ class _SplashViewState extends ConsumerState<SplashView> {
             const Text(
               'Version 1.0.0',
               style: TextStyle(
-                fontFamily: 'Poppins',
+                color: Color.fromARGB(255, 123, 122, 122),
+                fontFamily: 'Poppins-Regular',
               ),
             ),
           ],

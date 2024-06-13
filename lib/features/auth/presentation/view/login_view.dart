@@ -39,7 +39,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     alignment: Alignment.topCenter,
                     child: Image.asset(
                       "assets/images/logo.png",
-                      height: size.height * 0.3,
+                      height: size.height * 0.25,
                     ),
                   ),
                   const Text(
@@ -73,17 +73,20 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                 SvgPicture.asset('assets/icons/password.svg'))),
                   ),
                   _gap,
-                  const Align(
+                  Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 48, 47, 47),
-                          fontWeight: FontWeight.bold),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 18, 181, 163),
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                   SizedBox(
-                    height: size.height * 0.04,
+                    height: size.height * 0.02,
                   ),
                   ElevatedButton(
                     onPressed: () {},
@@ -121,36 +124,64 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     ],
                   ),
                   SizedBox(
-                    height: size.height * 0.04,
+                    height: size.height * 0.02,
                   ),
                   ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        shadowColor: Colors.black.withOpacity(0.2),
-                        elevation: 10,
-                        backgroundColor:
-                            const Color.fromARGB(255, 247, 247, 247),
-                        minimumSize: Size(size.width, 60),
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      shadowColor: Colors.black.withOpacity(0.2),
+                      elevation: 10,
+                      backgroundColor: const Color.fromARGB(255, 247, 247, 247),
+                      minimumSize: Size(size.width, 60),
+                    ),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icons/google.svg',
+                          height: size.height * 0.04,
+                          width: size.width * 0.06,
+                        ),
+                        SizedBox(
+                          width: size.width * 0.08,
+                        ),
+                        const Text(
+                          'Continue with Google',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 104, 102, 102)),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: size.height * 0.02,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Don't have an account?",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 95, 94, 94),
+                        ),
                       ),
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/icons/google.svg',
-                            height: size.height * 0.04,
-                            width: size.width * 0.06,
+                      TextButton(
+                        onPressed: () {
+                          ref
+                              .read(authViewModelProvider.notifier)
+                              .openRegisterView();
+                        },
+                        child: const Text(
+                          'Sign Up',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 18, 181, 163),
+                            fontWeight: FontWeight.bold,
                           ),
-                          SizedBox(
-                            width: size.width * 0.08,
-                          ),
-                          const Text(
-                            'Continue with Google',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 104, 102, 102)),
-                          ),
-                        ],
-                      )),
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
