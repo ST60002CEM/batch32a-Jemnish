@@ -18,6 +18,13 @@ class AppTheme {
       fontFamily: 'Montserrat',
       useMaterial3: true,
 
+      textTheme: const TextTheme(
+          titleLarge: TextStyle(
+        fontSize: 32,
+        color: Color.fromARGB(255, 61, 61, 61),
+        fontWeight: FontWeight.w500,
+      )),
+
       // Change app bar color
       appBarTheme: const AppBarTheme(
         elevation: 0,
