@@ -3,10 +3,7 @@ class AuthState {
 
   final String? error;
 
-  final bool obscurePassword;
-
   AuthState({
-    required this.obscurePassword,
     required this.isLoading,
     this.error,
   });
@@ -14,7 +11,6 @@ class AuthState {
   factory AuthState.initial() => AuthState(
         isLoading: false,
         error: null,
-        obscurePassword: true,
       );
 
   AuthState copyWith({
@@ -25,7 +21,6 @@ class AuthState {
     return AuthState(
       isLoading: isLoading ?? this.isLoading,
       error: error ?? this.error,
-      obscurePassword: obscurePassword ?? this.obscurePassword,
     );
   }
 }

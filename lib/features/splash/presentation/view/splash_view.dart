@@ -14,7 +14,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
   @override
   void initState() {
     // Wait for 2 seconds and then navigate
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => const LoginView(),
       ));
@@ -27,6 +27,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffE1FCF9),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

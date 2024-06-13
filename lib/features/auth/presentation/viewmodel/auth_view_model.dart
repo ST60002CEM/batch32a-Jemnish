@@ -18,9 +18,7 @@ class AuthViewModel extends StateNotifier<AuthState> {
   final AuthUseCase authUseCase;
   final LoginViewNavigator navigator;
 
-  void obsurePassword() {
-    state = state.copyWith(obscurePassword: !state.obscurePassword);
-  }
+ 
 
   void addStudent({required AuthEntity auth}) async {
     state = state.copyWith(isLoading: true);

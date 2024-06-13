@@ -59,22 +59,9 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     TextFormField(
                       key: const ValueKey('password'),
                       controller: _passwordController,
-                      obscureText: authState.obscurePassword,
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            authState.obscurePassword
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          ),
-                          onPressed: () {
-                            ref
-                                .read(authViewModelProvider.notifier)
-                                .obsurePassword();
-                          },
-                        ),
-                      ),
+                      decoration: const InputDecoration(
+                          labelText: 'Password',
+                          suffixIcon: Icon(Icons.password)),
                       validator: ((value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter password';
