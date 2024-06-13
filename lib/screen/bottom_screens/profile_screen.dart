@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:student_management_starter/screen/login_screen.dart';
+import 'package:kheti_pati/screen/login_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

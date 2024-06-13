@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:student_management_starter/features/home/presentation/view/bottom_view/dashboard_view.dart';
-import 'package:student_management_starter/features/home/presentation/view/bottom_view/news_feed_view.dart';
-import 'package:student_management_starter/features/home/presentation/view/bottom_view/product_view.dart';
-import 'package:student_management_starter/features/home/presentation/view/bottom_view/profile_view.dart';
+import 'package:kheti_pati/features/home/presentation/view/bottom_view/dashboard_view.dart';
+import 'package:kheti_pati/features/home/presentation/view/bottom_view/news_feed_view.dart';
+import 'package:kheti_pati/features/home/presentation/view/bottom_view/product_view.dart';
+import 'package:kheti_pati/features/home/presentation/view/bottom_view/profile_view.dart';
 
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});

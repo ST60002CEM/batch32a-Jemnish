@@ -1,5 +1,5 @@
-import 'package:student_management_starter/app/navigator/navigator.dart';
-import 'package:student_management_starter/features/auth/presentation/view/register_view.dart';
+import 'package:kheti_pati/app/navigator/navigator.dart';
+import 'package:kheti_pati/features/auth/presentation/view/register_view.dart';
 
 // This class will call any view I call
 class RegisterViewNavigator {}

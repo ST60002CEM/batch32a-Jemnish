@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:student_management_starter/app/constants/hive_table_constant.dart';
-import 'package:student_management_starter/features/auth/data/model/auth_hive_model.dart';
+import 'package:kheti_pati/app/constants/hive_table_constant.dart';
+import 'package:kheti_pati/features/auth/data/model/auth_hive_model.dart';
 
 final hiveServiceProvider = Provider((ref) => HiveService());
 
@@ -19,21 +19,21 @@ class HiveService {
  
 
   
-  // ============= Student Queries
-  Future<void> addStudent(AuthHiveModel auth) async {
-    var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.studentBox);
-    await box.put(auth.studentId, auth);
+  // ============= User Queries
+  Future<void> addUser(AuthHiveModel auth) async {
+    var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.userBox);
+    await box.put(auth.userId, auth);
   }
 
-  Future<AuthHiveModel> getStudent(String username) async {
-    var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.studentBox);
+  Future<AuthHiveModel> getUser(String username) async {
+    var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.userBox);
     return box.values.firstWhere((element) => element.username == username);
   }
 
   Future<AuthHiveModel> login(String username, String password) async {
-    var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.studentBox);
-    var student = box.values.firstWhere((element) =>
+    var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.userBox);
+    var user = box.values.firstWhere((element) =>
         element.username == username && element.password == password);
-    return student;
+    return user;
   }
 }

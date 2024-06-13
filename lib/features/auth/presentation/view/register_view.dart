@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:student_management_starter/features/auth/domain/entity/auth_entity.dart';
-import 'package:student_management_starter/features/auth/presentation/viewmodel/auth_view_model.dart';
+import 'package:kheti_pati/features/auth/domain/entity/auth_entity.dart';
+import 'package:kheti_pati/features/auth/presentation/viewmodel/auth_view_model.dart';
 
 class RegisterView extends ConsumerStatefulWidget {
   const RegisterView({super.key});
@@ -30,6 +30,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
       if (image != null) {
         setState(() {
           _img = File(image.path);
+          ref.read(authViewModelProvider.notifier).uploadProfilePicture(_img);
         });
       } else {
         return;
@@ -49,12 +50,8 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  
-  
-
   @override
   Widget build(BuildContext context) {
-    
     var authState = ref.watch(authViewModelProvider);
 
     return Scaffold(
@@ -176,9 +173,13 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                   _gap,
                   TextFormField(
                     controller: _passwordController,
-                    decoration: const InputDecoration(
-                        labelText: 'Password',
-                        suffixIcon: Icon(Icons.password)),
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.visibility),
+                        onPressed: () {},
+                      ),
+                    ),
                     validator: ((value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter password';
@@ -202,7 +203,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                           );
                           ref
                               .read(authViewModelProvider.notifier)
-                              .addStudent(auth: auth);
+                              .addUser(auth: auth);
                         }
                       },
                       child: const Text('Register'),

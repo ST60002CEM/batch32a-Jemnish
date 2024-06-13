@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_management_starter/features/home/presentation/navigator/home_navigator.dart';
-import 'package:student_management_starter/features/home/presentation/widget/my_snackbar.dart';
+import 'package:kheti_pati/features/home/presentation/navigator/home_navigator.dart';
+import 'package:kheti_pati/features/home/presentation/widget/my_snackbar.dart';
 
 final homeViewModelProvider = StateNotifierProvider<HomeViewModel, bool>(
   (ref) => HomeViewModel(ref.read(homeViewNavigatorProvider)),

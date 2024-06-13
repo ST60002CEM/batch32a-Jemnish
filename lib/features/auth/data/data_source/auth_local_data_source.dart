@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_management_starter/core/failure/failure.dart';
-import 'package:student_management_starter/core/networking/local/hive_service.dart';
-import 'package:student_management_starter/features/auth/data/model/auth_hive_model.dart';
-import 'package:student_management_starter/features/auth/domain/entity/auth_entity.dart';
+import 'package:kheti_pati/core/failure/failure.dart';
+import 'package:kheti_pati/core/networking/local/hive_service.dart';
+import 'package:kheti_pati/features/auth/data/model/auth_hive_model.dart';
+import 'package:kheti_pati/features/auth/domain/entity/auth_entity.dart';
+
 
 final authLocalDataSourceProvider = Provider((ref) => AuthLocalDataSource(
     hiveService: ref.read(hiveServiceProvider),
@@ -14,14 +15,16 @@ class AuthLocalDataSource {
   final AuthHiveModel authHiveModel;
 
   AuthLocalDataSource({required this.hiveService, required this.authHiveModel});
+  
+  get hiveuser => null;
 
-  // Add Student
-  Future<Either<Failure, bool>> addStudent(AuthEntity auth) async {
+  // Add User
+  Future<Either<Failure, bool>> addUser(AuthEntity auth) async {
     try {
       // If already username throw error
-      final hiveStudent = authHiveModel.toHiveModel(auth);
+      final hiveUser = authHiveModel.toHiveModel(auth);
 
-      await hiveService.addStudent(hiveStudent);
+      await hiveService.addUser(hiveUser);
 
       return const Right(true);
     } catch (e) {
@@ -29,14 +32,14 @@ class AuthLocalDataSource {
     }
   }
 
-  // Get Student
-  Future<Either<Failure, AuthEntity>> getStudent(String username) async {
+  // Get User
+  Future<Either<Failure, AuthEntity>> getUser(String username) async {
     try {
-      final hiveStudent = await hiveService.getStudent(username);
+      final hiveUser = await hiveService.getUser(username);
 
-      final student = hiveStudent.toEntity();
+      final user = hiveuser.toEntity();
 
-      return Right(student);
+      return Right(user);
     } catch (e) {
       return Left(Failure(error: e.toString()));
     }

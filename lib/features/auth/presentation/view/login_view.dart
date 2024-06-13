@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_management_starter/features/auth/presentation/viewmodel/auth_view_model.dart';
+import 'package:kheti_pati/features/auth/presentation/viewmodel/auth_view_model.dart';
 
 class LoginView extends ConsumerStatefulWidget {
   const LoginView({super.key});
@@ -16,8 +16,6 @@ class _LoginViewState extends ConsumerState<LoginView> {
   final _usernameController = TextEditingController(text: '');
   final _passwordController = TextEditingController(text: '');
 
-  // final _usernameController = TextEditingController();
-  // final _passwordController = TextEditingController();
   final _gap = const SizedBox(height: 8);
   bool isObscure = true;
   @override
@@ -47,6 +45,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Username',
+                        suffixIcon: Icon(Icons.person),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -60,8 +59,9 @@ class _LoginViewState extends ConsumerState<LoginView> {
                       key: const ValueKey('password'),
                       controller: _passwordController,
                       decoration: const InputDecoration(
-                          labelText: 'Password',
-                          suffixIcon: Icon(Icons.password)),
+                        labelText: 'Password',
+                        suffixIcon: Icon(Icons.password),
+                      ),
                       validator: ((value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter password';
@@ -98,10 +98,6 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     ElevatedButton(
                       key: const ValueKey('registerButton'),
                       onPressed: () {
-                        // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        //   builder: (context) => const RegisterView(),
-                        // ));
-
                         ref
                             .read(authViewModelProvider.notifier)
                             .openRegisterView();
