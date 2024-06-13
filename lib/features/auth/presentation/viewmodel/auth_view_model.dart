@@ -4,7 +4,7 @@ import 'package:student_management_starter/features/auth/domain/entity/auth_enti
 import 'package:student_management_starter/features/auth/domain/usecases/auth_usecase.dart';
 import 'package:student_management_starter/features/auth/presentation/navigator/login_navigator.dart';
 import 'package:student_management_starter/features/auth/presentation/state/auth_state.dart';
-import 'package:student_management_starter/features/batch/presentation/widgets/show_my_snackbar.dart';
+import 'package:student_management_starter/features/home/presentation/widget/my_snackbar.dart';
 
 final authViewModelProvider =
     StateNotifierProvider<AuthViewModel, AuthState>((ref) {

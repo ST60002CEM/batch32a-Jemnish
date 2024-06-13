@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_management_starter/features/batch/presentation/viewmodel/batch_view_model.dart';
-import 'package:student_management_starter/features/batch/presentation/widgets/show_my_snackbar.dart';
-import 'package:student_management_starter/features/course/presentation/viewmodel/course_view_model.dart';
 import 'package:student_management_starter/features/home/presentation/viewmodel/home_viewmodel.dart';
-import 'package:student_management_starter/features/home/presentation/widget/batch_widget.dart';
-import 'package:student_management_starter/features/home/presentation/widget/course_widget.dart';
+import 'package:student_management_starter/features/home/presentation/widget/my_snackbar.dart';
 
 class DashboardView extends ConsumerStatefulWidget {
   const DashboardView({super.key});
@@ -25,75 +21,42 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
-    var batchState = ref.watch(batchViewModelProvider);
-    var courseState = ref.watch(courseViewModelProvider);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dashboard View'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              // ref.read(batchViewModelProvider.notifier).getBatches();
-              // ref.read(courseViewModelProvider.notifier).getCourses();
-              showMySnackBar(message: 'Refressing...');
-            },
-            icon: const Icon(
-              Icons.refresh,
-              color: Colors.white,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              ref.read(homeViewModelProvider.notifier).logout();
-            },
-            icon: const Icon(
-              Icons.logout,
-              color: Colors.white,
-            ),
-          ),
-          Switch(
-              value: isDark,
-              onChanged: (value) {
-                setState(() {
-                  isDark = value;
-                  // ref.read(isDarkThemeProvider.notifier).updateTheme(value);
-                });
-              }),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Batches',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+        appBar: AppBar(
+          title: const Text('Dashboard View'),
+          actions: [
+            IconButton(
+              onPressed: () {
+                // ref.read(batchViewModelProvider.notifier).getBatches();
+                // ref.read(courseViewModelProvider.notifier).getCourses();
+                showMySnackBar(message: 'Refressing...');
+              },
+              icon: const Icon(
+                Icons.refresh,
+                color: Colors.white,
               ),
             ),
-            Flexible(
-              child: BatchWidget(ref: ref, batchList: batchState.lstBatches),
-            ),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Courses',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+            IconButton(
+              onPressed: () {
+                ref.read(homeViewModelProvider.notifier).logout();
+              },
+              icon: const Icon(
+                Icons.logout,
+                color: Colors.white,
               ),
             ),
-            Flexible(
-              child: CourseWidget(courseList: courseState.lstCourses),
-            ),
+            Switch(
+                value: isDark,
+                onChanged: (value) {
+                  setState(() {
+                    isDark = value;
+                    // ref.read(isDarkThemeProvider.notifier).updateTheme(value);
+                  });
+                }),
           ],
         ),
-      ),
-    );
+        body: const Center(
+          child: Text('Dashboard Screen'),
+        ));
   }
 }

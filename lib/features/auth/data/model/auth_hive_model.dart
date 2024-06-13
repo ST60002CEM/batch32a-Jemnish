@@ -2,8 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:student_management_starter/app/constants/hive_table_constant.dart';
 import 'package:student_management_starter/features/auth/domain/entity/auth_entity.dart';
-import 'package:student_management_starter/features/batch/data/model/batch_hive_model.dart';
-import 'package:student_management_starter/features/course/data/model/course_hive_model.dart';
+
 import 'package:uuid/uuid.dart';
 
 part 'auth_hive_model.g.dart';
@@ -26,11 +25,7 @@ class AuthHiveModel {
   @HiveField(3)
   final String phone;
 
-  @HiveField(4)
-  final BatchHiveModel batch;
-
-  @HiveField(5)
-  final List<CourseHiveModel> courses;
+  
 
   @HiveField(6)
   final String username;
@@ -44,8 +39,6 @@ class AuthHiveModel {
     required this.fname,
     required this.lname,
     required this.phone,
-    required this.batch,
-    required this.courses,
     required this.username,
     required this.password,
   }) : studentId = studentId ?? const Uuid().v4();
@@ -57,8 +50,7 @@ class AuthHiveModel {
           fname: '',
           lname: '',
           phone: '',
-          batch: BatchHiveModel.empty(),
-          courses: [],
+ 
           username: '',
           password: '',
         );
@@ -69,8 +61,7 @@ class AuthHiveModel {
         fname: fname,
         lname: lname,
         phone: phone,
-        batch: batch.toEntity(),
-        courses: CourseHiveModel.empty().toEntityList(courses),
+
         username: username,
         password: password,
       );
@@ -81,8 +72,7 @@ class AuthHiveModel {
         fname: entity.fname,
         lname: entity.lname,
         phone: entity.phone,
-        batch: BatchHiveModel.empty().fromEntity(entity.batch),
-        courses: CourseHiveModel.empty().fromEntityList(entity.courses),
+
         username: entity.username,
         password: entity.password,
       );
@@ -93,6 +83,6 @@ class AuthHiveModel {
 
   @override
   String toString() {
-    return 'studentId: $studentId, fname: $fname, lname: $lname, phone: $phone, batch: $batch, courses: $courses, username: $username, password: $password';
+    return 'studentId: $studentId, fname: $fname, lname: $lname, phone: $phone, username: $username, password: $password';
   }
 }
