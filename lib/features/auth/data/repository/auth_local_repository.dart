@@ -7,7 +7,6 @@ import 'package:kheti_pati/features/auth/data/data_source/auth_local_data_source
 import 'package:kheti_pati/features/auth/domain/entity/auth_entity.dart';
 import 'package:kheti_pati/features/auth/domain/repository/i_auth_repository.dart';
 
-
 final authLocalRepository = Provider<IAuthRepository>((ref) {
   return AuthLocalRepository(
       authLocalDataSource: ref.read(authLocalDataSourceProvider));
@@ -30,12 +29,6 @@ class AuthLocalRepository implements IAuthRepository {
 
   @override
   Future<Either<Failure, String>> uploadProfilePicture(File file) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, bool>> addStudent(AuthEntity auth) {
-    // TODO: implement addStudent
     throw UnimplementedError();
   }
 }

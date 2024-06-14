@@ -5,7 +5,6 @@ import 'package:kheti_pati/core/networking/local/hive_service.dart';
 import 'package:kheti_pati/features/auth/data/model/auth_hive_model.dart';
 import 'package:kheti_pati/features/auth/domain/entity/auth_entity.dart';
 
-
 final authLocalDataSourceProvider = Provider((ref) => AuthLocalDataSource(
     hiveService: ref.read(hiveServiceProvider),
     authHiveModel: ref.read(authHiveModelProvider)));
@@ -15,18 +14,25 @@ class AuthLocalDataSource {
   final AuthHiveModel authHiveModel;
 
   AuthLocalDataSource({required this.hiveService, required this.authHiveModel});
-  
-  get hiveuser => null;
 
   // Add User
   Future<Either<Failure, bool>> addUser(AuthEntity auth) async {
     try {
-      // If already username throw error
-      final hiveUser = authHiveModel.toHiveModel(auth);
+      // Check if user already exists
+      final existingUserResult = await getUser(auth.username);
 
-      await hiveService.addUser(hiveUser);
-
-      return const Right(true);
+      return existingUserResult.fold(
+        (failure) async {
+          // User does not exist, proceed to add user
+          final hiveUser = authHiveModel.toHiveModel(auth);
+          await hiveService.addUser(hiveUser);
+          return const Right(true);
+        },
+        (user) {
+          // User already exists, return failure
+          return Left(Failure(error: 'User already exists'));
+        },
+      );
     } catch (e) {
       return Left(Failure(error: e.toString()));
     }
@@ -37,7 +43,7 @@ class AuthLocalDataSource {
     try {
       final hiveUser = await hiveService.getUser(username);
 
-      final user = hiveuser.toEntity();
+      final user = hiveUser.toEntity();
 
       return Right(user);
     } catch (e) {
@@ -48,9 +54,22 @@ class AuthLocalDataSource {
   // Login
   Future<Either<Failure, bool>> login(String username, String password) async {
     try {
-      return const Right(true);
+      final hiveUser = await hiveService.getUser(username);
+
+      if (hiveUser.password == password) {
+        return const Right(true);
+      } else {
+        return Left(Failure(error: 'Invalid Credentials'));
+      }
     } catch (e) {
       return Left(Failure(error: e.toString()));
     }
   }
+  // Future<Either<Failure, bool>> login(String username, String password) async {
+  //   try {
+  //     return const Right(true);
+  //   } catch (e) {
+  //     return Left(Failure(error: e.toString()));
+  //   }
+  // }
 }

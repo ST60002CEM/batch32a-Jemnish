@@ -1,11 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:kheti_pati/features/auth/domain/entity/auth_entity.dart';
 import 'package:kheti_pati/features/auth/presentation/viewmodel/auth_view_model.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class RegisterView extends ConsumerStatefulWidget {
   const RegisterView({super.key});
@@ -15,34 +12,9 @@ class RegisterView extends ConsumerStatefulWidget {
 }
 
 class _RegisterViewState extends ConsumerState<RegisterView> {
-  // Check for camera permission
-  checkCameraPermission() async {
-    if (await Permission.camera.request().isRestricted ||
-        await Permission.camera.request().isDenied) {
-      await Permission.camera.request();
-    }
-  }
-
-  File? _img;
-  Future _browseImage(WidgetRef ref, ImageSource imageSource) async {
-    try {
-      final image = await ImagePicker().pickImage(source: imageSource);
-      if (image != null) {
-        setState(() {
-          _img = File(image.path);
-          ref.read(authViewModelProvider.notifier).uploadProfilePicture(_img);
-        });
-      } else {
-        return;
-      }
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-  }
-
   final _gap = const SizedBox(height: 8);
 
-  final _key = GlobalKey<FormState>();
+  final _formkey = GlobalKey<FormState>();
 
   final _fnameController = TextEditingController();
   final _lnameController = TextEditingController();
@@ -58,173 +30,235 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
         backgroundColor: const Color(0xffE1FCF9),
         body: SingleChildScrollView(
           child: SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: size.width * 0.1,
-              ),
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Image.asset(
-                      "assets/images/logo.png",
-                      height: size.height * 0.25,
+            child: Form(
+              key: _formkey,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: size.width * 0.1,
+                ),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Image.asset(
+                        "assets/images/logo.png",
+                        height: size.height * 0.25,
+                      ),
                     ),
-                  ),
-                  const Text(
-                    "Sign up",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color.fromARGB(255, 95, 94, 94),
-                      fontWeight: FontWeight.w500,
+                    const Text(
+                      "Sign up",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color.fromARGB(255, 95, 94, 94),
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  ),
-                  _gap,
-                  TextField(
-                    style:
-                        const TextStyle(color: Color.fromARGB(255, 95, 94, 94)),
-                    decoration: InputDecoration(
+                    _gap,
+                    TextFormField(
+                      controller: _fnameController,
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 95, 94, 94)),
+                      decoration: InputDecoration(
                         hintText: "fname",
                         prefixIcon: IconButton(
-                            onPressed: null,
-                            icon: SvgPicture.asset('assets/icons/smile.svg'))),
-                  ),
-                  _gap,
-                  TextField(
-                    style:
-                        const TextStyle(color: Color.fromARGB(255, 95, 94, 94)),
-                    decoration: InputDecoration(
+                          onPressed: null,
+                          icon: SvgPicture.asset('assets/icons/smile.svg'),
+                        ),
+                      ),
+                      validator: ((value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter first name';
+                        }
+                        return null;
+                      }),
+                    ),
+                    _gap,
+                    TextFormField(
+                      controller: _lnameController,
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 95, 94, 94)),
+                      decoration: InputDecoration(
                         hintText: "lname",
                         prefixIcon: IconButton(
-                            onPressed: null,
-                            icon: SvgPicture.asset('assets/icons/smile.svg'))),
-                  ),
-                  _gap,
-                  TextField(
-                    style:
-                        const TextStyle(color: Color.fromARGB(255, 95, 94, 94)),
-                    decoration: InputDecoration(
+                          onPressed: null,
+                          icon: SvgPicture.asset('assets/icons/smile.svg'),
+                        ),
+                      ),
+                      validator: ((value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter last name';
+                        }
+                        return null;
+                      }),
+                    ),
+                    _gap,
+                    TextFormField(
+                      controller: _phoneController,
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 95, 94, 94)),
+                      decoration: InputDecoration(
                         hintText: "phone",
                         prefixIcon: IconButton(
-                            onPressed: null,
-                            icon: SvgPicture.asset('assets/icons/phone.svg'))),
-                  ),
-                  _gap,
-                  TextField(
-                    style:
-                        const TextStyle(color: Color.fromARGB(255, 95, 94, 94)),
-                    decoration: InputDecoration(
+                          onPressed: null,
+                          icon: SvgPicture.asset('assets/icons/phone.svg'),
+                        ),
+                      ),
+                      validator: ((value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter phone number';
+                        }
+                        return null;
+                      }),
+                    ),
+                    _gap,
+                    TextFormField(
+                      controller: _usernameController,
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 95, 94, 94)),
+                      decoration: InputDecoration(
                         hintText: "username",
                         prefixIcon: IconButton(
-                            onPressed: null,
-                            icon: SvgPicture.asset('assets/icons/user.svg'))),
-                  ),
-                  _gap,
-                  TextField(
-                    obscureText: true,
-                    style:
-                        const TextStyle(color: Color.fromARGB(255, 95, 94, 94)),
-                    decoration: InputDecoration(
+                          onPressed: null,
+                          icon: SvgPicture.asset('assets/icons/user.svg'),
+                        ),
+                      ),
+                      validator: ((value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter a username';
+                        }
+                        return null;
+                      }),
+                    ),
+                    _gap,
+                    TextFormField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 95, 94, 94)),
+                      decoration: InputDecoration(
                         hintText: "password",
                         prefixIcon: IconButton(
-                            onPressed: null,
-                            icon:
-                                SvgPicture.asset('assets/icons/password.svg'))),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.04,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff18B5A3),
-                      minimumSize: Size(size.width, 60),
-                    ),
-                    child: const Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                          onPressed: null,
+                          icon: SvgPicture.asset('assets/icons/password.svg'),
+                        ),
                       ),
+                      validator: ((value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter a password';
+                        }
+                        return null;
+                      }),
                     ),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  const Row(
-                    children: [
-                      Expanded(
-                          child: Divider(
-                        color: Color.fromARGB(255, 95, 94, 94),
-                      )),
-                      Text(
-                        "or Sign up with Google",
+                    SizedBox(
+                      height: size.height * 0.04,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (_formkey.currentState!.validate()) {
+                          // Register
+                          AuthEntity auth = AuthEntity(
+                            fname: _fnameController.text,
+                            lname: _lnameController.text,
+                            phone: _phoneController.text,
+                            username: _usernameController.text,
+                            password: _passwordController.text,
+                          );
+                          ref
+                              .read(authViewModelProvider.notifier)
+                              .addUser(auth: auth);
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff18B5A3),
+                        minimumSize: Size(size.width, 60),
+                      ),
+                      child: const Text(
+                        'Sign Up',
                         style: TextStyle(
-                          color: Color.fromARGB(255, 95, 94, 94),
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Expanded(
-                          child: Divider(
-                        color: Color.fromARGB(255, 95, 94, 94),
-                      ))
-                    ],
-                  ),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      shadowColor: Colors.black.withOpacity(0.2),
-                      elevation: 10,
-                      backgroundColor: const Color.fromARGB(255, 247, 247, 247),
-                      minimumSize: Size(size.width, 60),
                     ),
-                    child: Row(
+                    SizedBox(
+                      height: size.height * 0.02,
+                    ),
+                    const Row(
                       children: [
-                        SvgPicture.asset(
-                          'assets/icons/google.svg',
-                          height: size.height * 0.04,
-                          width: size.width * 0.06,
-                        ),
-                        SizedBox(
-                          width: size.width * 0.08,
-                        ),
-                        const Text(
-                          'Continue with Google',
+                        Expanded(
+                            child: Divider(
+                          color: Color.fromARGB(255, 95, 94, 94),
+                        )),
+                        Text(
+                          "or Sign up with Google",
                           style: TextStyle(
-                              fontSize: 16,
+                            color: Color.fromARGB(255, 95, 94, 94),
+                          ),
+                        ),
+                        Expanded(
+                            child: Divider(
+                          color: Color.fromARGB(255, 95, 94, 94),
+                        ))
+                      ],
+                    ),
+                    SizedBox(
+                      height: size.height * 0.02,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        shadowColor: Colors.black.withOpacity(0.2),
+                        elevation: 10,
+                        backgroundColor:
+                            const Color.fromARGB(255, 247, 247, 247),
+                        minimumSize: Size(size.width, 60),
+                      ),
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/google.svg',
+                            height: size.height * 0.04,
+                            width: size.width * 0.06,
+                          ),
+                          SizedBox(
+                            width: size.width * 0.08,
+                          ),
+                          const Text(
+                            'Continue with Google',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 104, 102, 102)),
+                          ),
+                        ],
+                      ),
+                    ),
+                    _gap,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Already have an account?",
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 95, 94, 94),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text(
+                            'Sign In',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 18, 181, 163),
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 104, 102, 102)),
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                  _gap,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "Already have an account?",
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 95, 94, 94),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text(
-                          'Sign In',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 18, 181, 163),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
