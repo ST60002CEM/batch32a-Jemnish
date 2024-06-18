@@ -16,11 +16,11 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
 
   final _formkey = GlobalKey<FormState>();
 
-  final _fnameController = TextEditingController();
-  final _lnameController = TextEditingController();
+  final _fullNameController = TextEditingController();
   final _phoneController = TextEditingController();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _secutiryController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +55,11 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                     ),
                     _gap,
                     TextFormField(
-                      controller: _fnameController,
+                      controller: _fullNameController,
                       style: const TextStyle(
                           color: Color.fromARGB(255, 95, 94, 94)),
                       decoration: InputDecoration(
-                        hintText: "fname",
+                        hintText: "full name",
                         prefixIcon: IconButton(
                           onPressed: null,
                           icon: SvgPicture.asset('assets/icons/smile.svg'),
@@ -67,26 +67,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                       ),
                       validator: ((value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter first name';
-                        }
-                        return null;
-                      }),
-                    ),
-                    _gap,
-                    TextFormField(
-                      controller: _lnameController,
-                      style: const TextStyle(
-                          color: Color.fromARGB(255, 95, 94, 94)),
-                      decoration: InputDecoration(
-                        hintText: "lname",
-                        prefixIcon: IconButton(
-                          onPressed: null,
-                          icon: SvgPicture.asset('assets/icons/smile.svg'),
-                        ),
-                      ),
-                      validator: ((value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter last name';
+                          return 'Please enter full name';
                         }
                         return null;
                       }),
@@ -149,6 +130,30 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                         return null;
                       }),
                     ),
+                    const Text('Your first teacher name?',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 67, 66, 66),
+                        )),
+                    TextFormField(
+                      controller: _secutiryController,
+                      style: const TextStyle(
+                        color: Color.fromARGB(255, 95, 94, 94),
+                      ),
+                      decoration: InputDecoration(
+                        hintText: "Security Question",
+                        prefixIcon: IconButton(
+                          onPressed: null,
+                          icon: SvgPicture.asset('assets/icons/security.svg'),
+                        ),
+                      ),
+                      validator: ((value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your first teacher name';
+                        }
+                        return null;
+                      }),
+                    ),
                     SizedBox(
                       height: size.height * 0.04,
                     ),
@@ -157,8 +162,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                         if (_formkey.currentState!.validate()) {
                           // Register
                           AuthEntity auth = AuthEntity(
-                            fname: _fnameController.text,
-                            lname: _lnameController.text,
+                            fullname: _fullNameController.text,
                             phone: _phoneController.text,
                             username: _usernameController.text,
                             password: _passwordController.text,
