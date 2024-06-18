@@ -4,7 +4,6 @@ import 'package:kheti_pati/app/constants/api_endpoint.dart';
 import 'package:kheti_pati/core/networking/remote/dio_error_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-
 final httpServiceProvider = Provider<Dio>(
   (ref) => HttpService(Dio()).dio,
 );

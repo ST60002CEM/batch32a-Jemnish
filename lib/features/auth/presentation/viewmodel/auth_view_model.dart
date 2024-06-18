@@ -6,7 +6,7 @@ import 'package:kheti_pati/features/auth/presentation/navigator/login_navigator.
 import 'package:kheti_pati/features/auth/presentation/state/auth_state.dart';
 import 'package:kheti_pati/features/home/presentation/widget/my_snackbar.dart';
 
-final   authViewModelProvider =
+final  authViewModelProvider =
     StateNotifierProvider<AuthViewModel, AuthState>((ref) {
   final navigator = ref.read(loginViewNavigatorProvider);
   return AuthViewModel(ref.read(authUseCaseProvider), navigator);
