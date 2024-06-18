@@ -23,9 +23,6 @@ class AuthUseCase {
     return authRepository.addUser(auth);
   }
 
-  Future<Either<Failure, String>> uploadProfilePicture(File file) {
-    return authRepository.uploadProfilePicture(file);
-  }
 
   
 }

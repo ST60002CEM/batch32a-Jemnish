@@ -7,11 +7,10 @@ import 'package:kheti_pati/features/auth/data/repository/auth_local_repository.d
 import 'package:kheti_pati/features/auth/domain/entity/auth_entity.dart';
 
 final authRepositoryProvider = Provider<IAuthRepository>((ref) {
-  return ref.watch(authLocalRepository);
+  return ref.watch(authLocalRepositoryProvider);
 });
 
 abstract class IAuthRepository {
   Future<Either<Failure, bool>> addUser(AuthEntity auth);
   Future<Either<Failure, bool>> login(String username, String password);
-  Future<Either<Failure, String>> uploadProfilePicture(File file);
 }

@@ -30,6 +30,9 @@ class AuthHiveModel {
   @HiveField(7)
   final String password;
 
+  @HiveField(8)
+  final String securityQuestion;
+
   // Constructor
   AuthHiveModel({
     String? userId,
@@ -37,6 +40,7 @@ class AuthHiveModel {
     required this.phone,
     required this.username,
     required this.password,
+    required this.securityQuestion,
   }) : userId = userId ?? const Uuid().v4();
 
   // empty constructor
@@ -47,6 +51,7 @@ class AuthHiveModel {
           phone: '',
           username: '',
           password: '',
+          securityQuestion: '',
         );
 
   // Convert Hive Object to Entity
@@ -56,6 +61,7 @@ class AuthHiveModel {
         phone: phone,
         username: username,
         password: password,
+        securityQuestion: securityQuestion,
       );
 
   // Convert Entity to Hive Object
@@ -63,9 +69,10 @@ class AuthHiveModel {
         userId: const Uuid().v4(),
         fullname: entity.fullname,
         phone: entity.phone,
-
+        
         username: entity.username,
         password: entity.password,
+        securityQuestion: entity.securityQuestion,
       );
 
   // Convert Entity List to Hive List
@@ -74,6 +81,6 @@ class AuthHiveModel {
 
   @override
   String toString() {
-    return 'userId: $userId, fullname: $fullname, phone: $phone, username: $username, password: $password';
+    return 'userId: $userId, fullname: $fullname, phone : $phone, username: $username, password: $password, securityQuestion: $securityQuestion';
   }
 }
