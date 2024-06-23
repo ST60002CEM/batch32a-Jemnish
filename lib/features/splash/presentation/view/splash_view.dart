@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_management_starter/features/auth/presentation/view/login_view.dart';
+import 'package:kheti_pati/features/splash/presentation/viewmodel/splash_view_model.dart';
 
 class SplashView extends ConsumerStatefulWidget {
   const SplashView({super.key});
@@ -13,32 +13,18 @@ class SplashView extends ConsumerStatefulWidget {
 class _SplashViewState extends ConsumerState<SplashView> {
   @override
   void initState() {
-    // Wait for 2 seconds and then navigate
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const LoginView(),
-      ));
-    });
-
-    // ref.read(splashViewModelProvider.notifier).openLoginView();
-    // super.initState();
+    ref.read(splashViewModelProvider.notifier).openLoginView();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffE1FCF9),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Welcome to KhetiPati',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             Image.asset(
               'assets/images/logo.png',
               width: 250, // adjust the width as needed
@@ -49,7 +35,8 @@ class _SplashViewState extends ConsumerState<SplashView> {
             const Text(
               'Version 1.0.0',
               style: TextStyle(
-                fontFamily: 'Poppins',
+                color: Color.fromARGB(255, 123, 122, 122),
+                fontFamily: 'Poppins-Regular',
               ),
             ),
           ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:student_management_starter/app/constants/theme_constant.dart';
+import 'package:kheti_pati/app/constants/theme_constant.dart';
 
 class AppTheme {
   AppTheme._();
@@ -15,8 +15,15 @@ class AppTheme {
               primary: Color.fromARGB(255, 17, 119, 20),
             ),
       brightness: isDark ? Brightness.dark : Brightness.light,
-      fontFamily: 'Montserrat',
+      fontFamily: 'Poppins',
       useMaterial3: true,
+
+      textTheme: const TextTheme(
+          titleLarge: TextStyle(
+        fontSize: 32,
+        color: Color.fromARGB(255, 61, 61, 61),
+        fontWeight: FontWeight.w500,
+      )),
 
       // Change app bar color
       appBarTheme: const AppBarTheme(

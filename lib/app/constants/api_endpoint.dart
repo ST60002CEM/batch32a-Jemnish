@@ -3,26 +3,15 @@ class ApiEndpoints {
 
   static const Duration connectionTimeout = Duration(seconds: 1000);
   static const Duration receiveTimeout = Duration(seconds: 1000);
-  static const String baseUrl = "http://10.0.2.2:3000/api/v1/";
-  //static const String baseUrl = "http://192.168.4.4:3000/api/v1/";
+  static const String baseUrl = "http://172.26.0.49:5000/api/";
 
   // ====================== Auth Routes ======================
-  static const String login = "auth/login";
-  static const String register = "auth/register";
-  static const String getAllStudent = "auth/getAllStudents";
-  static const String getStudentsByBatch = "auth/getStudentsByBatch/";
-  static const String getStudentsByCourse = "auth/getStudentsByCourse/";
-  static const String updateStudent = "auth/updateStudent/";
-  static const String deleteStudent = "auth/deleteStudent/";
+  static const String login = "user/login";
+  static const String register = "user/create";
+  static const String getAllUser = "user/getAllUsers";
+  static const String updateUser = "user/updateUser/";
+  static const String deleteUser = "user/deleteUser/";
   static const String imageUrl = "http://10.0.2.2:3000/uploads/";
   static const String uploadImage = "auth/uploadImage";
-
-  // ====================== Batch Routes ======================
-  static const String createBatch = "batch/createBatch";
-  static const String getAllBatch = "batch/getAllBatches";
-
-  // ====================== Course Routes ======================
-  static const String createCourse = "course/createCourse";
-  static const String deleteCourse = "course/";
-  static const String getAllCourse = "course/getAllCourse";
+  static const String currentUser = "auth/getMe";
 }
