@@ -115,10 +115,7 @@ class _ProductViewState extends ConsumerState<ProductView> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          ref.read(productViewModelProvider.notifier).product(
-                                username: _usernameController.text,
-                                password: _passwordController.text,
-                              );
+                          // 
                         }
                       },
                       style: ElevatedButton.styleFrom(
