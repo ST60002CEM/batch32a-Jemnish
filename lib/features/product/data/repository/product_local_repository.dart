@@ -17,17 +17,6 @@ class ProductLocalRepository implements IProductRepository {
 
   ProductLocalRepository({required this.productLocalDataSource});
   
-  @override
-  Future<Either<Failure, bool>> addUser(ProductEntity product) {
-    // TODO: implement addUser
-    throw UnimplementedError();
-  }
   
-  @override
-  Future<Either<Failure, bool>> login(String username, String password) {
-    // TODO: implement login
-    throw UnimplementedError();
-  }
-
 
 }

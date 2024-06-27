@@ -52,7 +52,7 @@ class ProductHiveModel {
 
   // Convert Hive Object to Entity
   ProductEntity toEntity() => ProductEntity(
-        id: productId,
+        productId: productId,
         productTitle: productTitle,
         productDescription: productDescription,
         productPrice: productPrice,
@@ -63,7 +63,7 @@ class ProductHiveModel {
 
   // Convert Entity to Hive Object
   ProductHiveModel toHiveModel(ProductEntity entity) => ProductHiveModel(
-        productId: entity.id,
+        productId: entity.productId,
         productTitle: entity.productTitle,
         productDescription: entity.productDescription,
         productPrice: entity.productPrice,
