@@ -19,18 +19,20 @@ class ProductRemoteDataSource {
   ProductRemoteDataSource({required this.dio});
 
   Future<Either<Failure, List<ProductEntity>>> getAllProducts(page) async {
+    // send the page number too
     try {
-      final response = await dio.get(ApiEndpoints.getAllProduct);
-      if (response.statusCode == 201) {
-        final getAllProductDTO = GetAllProductDTO.fromJson(response.data);
-        final products =
-            getAllProductDTO.data.map((e) => e.toEntity()).toList();
-        return Right(products);
-      } else {
-        return Left(Failure(error: 'Failed to retrive Products'));
-      }
-    } on DioException catch (e) {
-      return Left(Failure(error: e.message.toString()));
+      final response = await dio.get(
+        ApiEndpoints.getAllProduct,
+        queryParameters: {
+          'page': page,
+        },
+      );
+
+      final getAllProductDto = GetAllProductDTO.fromJson(response.data);
+
+      return Right(getAllProductDto.data.map((e) => e.toEntity()).toList());
+    } catch (error) {
+      return Left(Failure(error: error.toString()));
     }
   }
 }

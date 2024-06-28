@@ -47,5 +47,8 @@ class ProductViewModel extends StateNotifier<ProductState> {
         },
       );
     }
+    if (hasReachedMax) {
+      state = state.copyWith(isLoading: false);
+    }
   }
 }
