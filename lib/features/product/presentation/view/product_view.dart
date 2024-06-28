@@ -69,13 +69,13 @@ class _ProductsViewState extends ConsumerState<ProductView> {
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              Text(
-                                products.productId.toString(),
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              // Text(
+                              //   products.productId.toString(),
+                              //   style: const TextStyle(
+                              //     fontSize: 20,
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
                               DecoratedBox(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -84,7 +84,7 @@ class _ProductsViewState extends ConsumerState<ProductView> {
                                 ),
                                 child: Image.network(
                                   // products.productImage,
-                                  'https://i.pinimg.com/474x/74/e8/37/74e8372371b880d73ccd8132a8a0a59a.jpg',
+                                  'http://10.12.20.1:5000/products/${products.productImage}',
                                   height: 200,
                                   width: 200,
                                   loadingBuilder: (BuildContext context,
