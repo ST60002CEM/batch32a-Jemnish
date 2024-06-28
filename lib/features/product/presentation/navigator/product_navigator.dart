@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kheti_pati/app/navigator/navigator.dart';
 import 'package:kheti_pati/features/auth/presentation/navigator/register_navigator.dart';
 import 'package:kheti_pati/features/home/presentation/navigator/home_navigator.dart';
-import 'package:kheti_pati/features/home/presentation/view/bottom_view/product_view.dart';
+import 'package:kheti_pati/features/product/presentation/view/product_view.dart';
 
 final productViewNavigatorProvider = Provider((ref) => ProductViewNavigator());
 

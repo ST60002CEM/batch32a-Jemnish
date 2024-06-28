@@ -6,12 +6,12 @@ part 'get_all_product_dto.g.dart';
 @JsonSerializable()
 class GetAllProductDTO {
   final bool success;
-  final int count;
+  final String message;
   final List<ProductApiModel> data;
 
   GetAllProductDTO({
     required this.success,
-    required this.count,
+    required this.message,
     required this.data,
   });
 

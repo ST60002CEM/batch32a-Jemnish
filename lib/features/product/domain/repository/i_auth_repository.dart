@@ -9,5 +9,5 @@ final productRepositoryProvider = Provider<IProductRepository>((ref) {
 });
 
 abstract class IProductRepository {
-
+  Future<Either<Failure, List<ProductEntity>>> getAllProducts( page);
 }

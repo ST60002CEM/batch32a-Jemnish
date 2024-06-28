@@ -1,34 +1,43 @@
+import 'package:kheti_pati/features/product/domain/entity/product_entity.dart';
+
 class ProductState {
+  final List<ProductEntity> products;
   final bool isLoading;
-  final String? error;
-  final String? imageName;
+  final bool hasMaxReached;
+  final int page;
 
   ProductState({
+    required this.products,
     required this.isLoading,
-    this.error,
-    this.imageName,
+    required this.hasMaxReached,
+    required this.page,
   });
 
   factory ProductState.initial() {
     return ProductState(
+      products: [],
       isLoading: false,
-      error: null,
-      imageName: null,
+      hasMaxReached: false,
+      page: 0,
     );
   }
 
   ProductState copyWith({
-    bool? isLoading,
     String? error,
-    String? imageName,
+    int? page,
+    bool? isLoading,
+    List<ProductEntity>? products,
+    bool? hasMaxReached,
   }) {
     return ProductState(
       isLoading: isLoading ?? this.isLoading,
-      error: error ?? this.error,
-      imageName: imageName ?? this.imageName,
+      products: products ?? this.products,
+      hasMaxReached: hasMaxReached ?? this.hasMaxReached,
+      page: page ?? this.page,
     );
   }
 
   @override
-  String toString() => 'ProductState(isLoading: $isLoading, error: $error)';
+  String toString() =>
+      'ProductState { products: ${products.length}, isLoading: $isLoading, hasMaxReached: $hasMaxReached, page: $page }';
 }

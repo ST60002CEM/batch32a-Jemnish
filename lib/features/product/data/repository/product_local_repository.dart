@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
@@ -17,6 +18,13 @@ class ProductLocalRepository implements IProductRepository {
 
   ProductLocalRepository({required this.productLocalDataSource});
   
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getAllProducts(page) {
+    // TODO: implement getAllProducts
+    throw UnimplementedError();
+  }
+
+
   
 
 }

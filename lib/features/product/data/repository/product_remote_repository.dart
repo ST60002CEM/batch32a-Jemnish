@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kheti_pati/core/failure/failure.dart';
@@ -14,5 +16,10 @@ final productRemoteRepositoryProvider = Provider<IProductRepository>((ref) {
 class ProductRemoteRepository implements IProductRepository {
   final ProductRemoteDataSource _productRemoteDataSource;
   ProductRemoteRepository(this._productRemoteDataSource);
+  
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getAllProducts( page) {
+    return _productRemoteDataSource.getAllProducts(page);
+  }
 
 }

@@ -12,4 +12,7 @@ class ProductLocalDataSource {
 
   ProductLocalDataSource(
       {required this.hiveService, required this.productHiveModel});
+
+  
+
 }

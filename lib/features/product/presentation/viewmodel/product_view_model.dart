@@ -16,5 +16,36 @@ class ProductViewModel extends StateNotifier<ProductState> {
   final ProductUseCase _productUseCase;
   final ProductViewNavigator navigator;
 
-  void openProductView() {}
+  Future resetState() async {
+    state = ProductState.initial();
+    getAllProducts();
+  }
+
+  void getAllProducts() async {
+    state = state.copyWith(isLoading: true);
+    final currentState = state;
+    final page = currentState.page + 1;
+    final products = currentState.products;
+    final hasReachedMax = currentState.hasMaxReached;
+
+    if (!hasReachedMax) {
+      // get data from data source
+      final result = await _productUseCase.getAllProducts(page);
+      result.fold(
+        (failure) =>
+            state = state.copyWith(hasMaxReached: true, isLoading: false),
+        (data) {
+          if (data.isEmpty) {
+            state = state.copyWith(hasMaxReached: true);
+          } else {
+            state = state.copyWith(
+              products: [...products, ...data],
+              page: page,
+              isLoading: false,
+            );
+          }
+        },
+      );
+    }
+  }
 }
