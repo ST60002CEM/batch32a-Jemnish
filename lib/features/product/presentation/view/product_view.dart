@@ -32,6 +32,7 @@ class _ProductsViewState extends ConsumerState<ProductView> {
         return true;
       },
       child: Scaffold(
+        backgroundColor: const Color(0xffE1FCF9),
         appBar: AppBar(
           title: const Text('Products '),
           actions: [

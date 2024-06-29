@@ -33,7 +33,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
           },
           elevation: 0,
           shape: const CircleBorder(),
-          backgroundColor: Colors.green,
+          backgroundColor: const Color(0xff009445),
           child: const Icon(
             Icons.add,
           )),
@@ -42,7 +42,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
       bottomNavigationBar: BottomAppBar(
         elevation: 0,
         height: 70,
-        color: Colors.green,
+        color: const Color(0xff009445),
         shape: const CircularNotchedRectangle(),
         notchMargin: 5,
         clipBehavior: Clip.antiAliasWithSaveLayer,
