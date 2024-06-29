@@ -22,31 +22,36 @@ class _ProductsViewState extends ConsumerState<ProductView> {
   Widget build(BuildContext context) {
     final state = ref.watch(productViewModelProvider);
 
-    return NotificationListener(
+    return NotificationListener<ScrollEndNotification>(
       onNotification: (notification) {
-        if (notification is ScrollEndNotification) {
-          if (_scrollController.position.extentAfter == 0) {
-            ref.read(productViewModelProvider.notifier).getAllProducts();
-          }
+        if (_scrollController.position.extentAfter == 0) {
+          ref.read(productViewModelProvider.notifier).getAllProducts();
         }
         return true;
       },
       child: Scaffold(
         backgroundColor: const Color(0xffE1FCF9),
         appBar: AppBar(
-          title: const Text('Products '),
+          title: const Text('Products'),
           actions: [
             TextButton.icon(
               onPressed: () {
                 ref.read(productViewModelProvider.notifier).resetState();
               },
-              icon: const Icon(Icons.refresh),
-              label: const Text('Refresh'),
+              icon: const Icon(
+                Icons.refresh,
+                color: Colors.white,
+              ),
+              label: const Text(
+                'Refresh',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
           ],
         ),
         body: RefreshIndicator(
-          // Yo chai pull to refresh ko lagi ho
           color: Colors.green,
           onRefresh: () async {
             ref.read(productViewModelProvider.notifier).resetState();
@@ -56,80 +61,103 @@ class _ProductsViewState extends ConsumerState<ProductView> {
             child: Column(
               children: [
                 Expanded(
-                  child: ListView.separated(
-                    separatorBuilder: (context, index) => const Divider(),
+                  child: ListView.builder(
                     controller: _scrollController,
                     itemCount: state.products.length,
                     physics: const AlwaysScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       final products = state.products[index];
 
-                      return Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              DecoratedBox(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Image.network(
-                                  // products.productImage,
-                                  'http://${ApiEndpoints.urls}:5000/products/${products.productImage}',
-                                  height: 200,
-                                  width: 200,
-                                  loadingBuilder: (BuildContext context,
-                                      Widget child,
-                                      ImageChunkEvent? loadingProgress) {
-                                    if (loadingProgress == null) {
-                                      return child;
-                                    } else if (loadingProgress
-                                            .expectedTotalBytes !=
-                                        null) {
-                                      return Center(
-                                        child: CircularProgressIndicator(
-                                          color: Colors.red,
-                                          value: loadingProgress
-                                                  .cumulativeBytesLoaded /
-                                              loadingProgress
-                                                  .expectedTotalBytes!,
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: Container(
+                              width: 380,
+                              height: 150,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 10,
+                                    offset: const Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        child: Image.network(
+                                          'http://${ApiEndpoints.urls}:5000/products/${products.productImage}',
+                                          width: 150,
                                         ),
-                                      );
-                                    } else {
-                                      // If total bytes are unknown, you may want to handle it differently
-                                      return const Center(
-                                        child: CircularProgressIndicator(
-                                            color: Colors.red),
-                                      );
-                                    }
-                                  },
-                                  errorBuilder: (BuildContext context,
-                                      Object error, StackTrace? stackTrace) {
-                                    return const Center(
-                                      child: Text('Failed to load image'),
-                                    );
-                                  },
-                                ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 0.45 *
+                                        MediaQuery.of(context).size.width,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          products.productTitle,
+                                          style: const TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          products.productDescription,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Rs.${products.productPrice}',
+                                          style: const TextStyle(
+                                            fontSize: 20,
+                                            color: Color(0xff009445),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.only(top: 10),
+                                    child: Column(
+                                      children: [
+                                        Icon(
+                                          Icons.favorite_outline,
+                                          color: Color(0xff009445),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                products.productTitle,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
+                        ],
                       );
                     },
                   ),
                 ),
-                // Data load huda feri progress bar dekhaune natra banda garne
                 if (state.isLoading)
-                  const CircularProgressIndicator(color: Colors.red),
+                  const CircularProgressIndicator(
+                      color: Color.fromARGB(255, 255, 255, 255)),
               ],
             ),
           ),
