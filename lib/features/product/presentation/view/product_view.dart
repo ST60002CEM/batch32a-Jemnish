@@ -73,8 +73,8 @@ class _ProductsViewState extends ConsumerState<ProductView> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             child: Container(
-                              width: 380,
-                              height: 150,
+                              width: 0.9 * MediaQuery.of(context).size.width,
+                              height: 120,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
@@ -88,63 +88,59 @@ class _ProductsViewState extends ConsumerState<ProductView> {
                                 ],
                               ),
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 10),
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        child: Image.network(
-                                          'http://${ApiEndpoints.urls}:5000/products/${products.productImage}',
-                                          width: 150,
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 10),
+                                        child: InkWell(
+                                          onTap: () {},
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            child: Image.network(
+                                              'http://${ApiEndpoints.urls}:5000/products/${products.productImage}',
+                                              width: 150,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 0.45 *
-                                        MediaQuery.of(context).size.width,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          products.productTitle,
-                                          style: const TextStyle(
-                                            fontSize: 22,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                      SizedBox(
+                                        width: 0.45 *
+                                            MediaQuery.of(context).size.width,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              products.productTitle,
+                                              style: const TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              products.productDescription,
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Rs.${products.productPrice}',
+                                              style: const TextStyle(
+                                                fontSize: 20,
+                                                color: Color(0xff009445),
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        Text(
-                                          products.productDescription,
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Rs.${products.productPrice}',
-                                          style: const TextStyle(
-                                            fontSize: 20,
-                                            color: Color(0xff009445),
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(top: 10),
-                                    child: Column(
-                                      children: [
-                                        Icon(
-                                          Icons.favorite_outline,
-                                          color: Color(0xff009445),
-                                        )
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
