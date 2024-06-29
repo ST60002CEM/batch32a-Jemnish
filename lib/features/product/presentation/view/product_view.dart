@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kheti_pati/app/constants/api_endpoint.dart';
 import 'package:kheti_pati/features/product/presentation/viewmodel/product_view_model.dart';
 
 class ProductView extends ConsumerStatefulWidget {
@@ -24,9 +25,7 @@ class _ProductsViewState extends ConsumerState<ProductView> {
     return NotificationListener(
       onNotification: (notification) {
         if (notification is ScrollEndNotification) {
-          // Scroll garda feri last ma ho ki haina bhanera check garne ani data call garne
           if (_scrollController.position.extentAfter == 0) {
-            // Data fetch gara api bata
             ref.read(productViewModelProvider.notifier).getAllProducts();
           }
         }
@@ -69,13 +68,6 @@ class _ProductsViewState extends ConsumerState<ProductView> {
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              // Text(
-                              //   products.productId.toString(),
-                              //   style: const TextStyle(
-                              //     fontSize: 20,
-                              //     fontWeight: FontWeight.bold,
-                              //   ),
-                              // ),
                               DecoratedBox(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -84,7 +76,7 @@ class _ProductsViewState extends ConsumerState<ProductView> {
                                 ),
                                 child: Image.network(
                                   // products.productImage,
-                                  'http://10.12.20.1:5000/products/${products.productImage}',
+                                  'http://${ApiEndpoints.urls}:5000/products/${products.productImage}',
                                   height: 200,
                                   width: 200,
                                   loadingBuilder: (BuildContext context,

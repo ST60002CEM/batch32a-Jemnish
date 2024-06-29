@@ -11,7 +11,9 @@ final productViewModelProvider =
 
 class ProductViewModel extends StateNotifier<ProductState> {
   ProductViewModel(this._productUseCase, this.navigator)
-      : super(ProductState.initial());
+      : super(ProductState.initial()) {
+    getAllProducts();
+  }
 
   final ProductUseCase _productUseCase;
   final ProductViewNavigator navigator;
