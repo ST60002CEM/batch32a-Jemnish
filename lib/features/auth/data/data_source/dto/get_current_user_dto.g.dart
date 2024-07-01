@@ -11,8 +11,8 @@ GetCurrentUserDto _$GetCurrentUserDtoFromJson(Map<String, dynamic> json) =>
       id: json['_id'] as String,
       fullname: json['fullname'] as String,
       phone: json['phone'] as String,
-      password: json['password'] as String,
       username: json['username'] as String,
+      password: json['password'] as String,
       securityQuestion: json['securityQuestion'] as String,
     );
 
